@@ -9,27 +9,63 @@
 // document.querySelector('.guess').value = 15;
 // console.log(document.querySelector('.guess').value);
 
-const secretNumber = Math.trunc(Math.random()*20)+1;
+let secretNumber = Math.trunc(Math.random()*20)+1;
 let score = 20;
-document.querySelector('.number').textContent = secretNumber;
+
 
 document.querySelector('.check').addEventListener('click', function() {
     const guess = Number(document.querySelector('.guess').value);
     console.log(guess);
 
+    // ketika tidak memasukan inputan
     if (!guess) {
-        document.querySelector('.message').textContent = "angka tidak ditemukan"
+        document.querySelector('.message').textContent = "angka tidak ditemukan";
 
+        // ketika player menang
     } else if (guess === secretNumber) {
-        document.querySelector('.message').textContent = "selamat anda benar 🎉"
+        
+        document.querySelector('.message').textContent = "selamat anda benar 🎉";
+        document.querySelector('.number').textContent = secretNumber;
+        document.querySelector('body').style.backgroundColor = '#60b347';
+        document.querySelector('.number').style.width = '30rem';
+        
+    
+    // ketika salah menebak jawaban
     } else if (guess > secretNumber) {
-        document.querySelector('.message').textContent = "angka yang anda masukan terlalu besar"
+        if(score > 1) {
+            document.querySelector('.message').textContent = "angka yang anda masukan terlalu besar";
         score --;
         document.querySelector('.score').textContent = score;
+        } else {
+            document.querySelector('.message').textContent = "anda kalah";
+            document.querySelector('.score').textContent = 0;
+        }
+
+        
     } else if (guess < secretNumber) {
-        document.querySelector('.message').textContent = "angka yang anda masukan terlalu kecil"
-        score --;
-        document.querySelector('.score').textContent = score;
+        if (score > 1) {
+            document.querySelector('.message').textContent = "angka yang anda masukan terlalu kecil"
+            score --;
+            document.querySelector('.score').textContent = score;
+
+        } else {
+            document.querySelector('.message').textContent = "anda kalah";
+            document.querySelector('.score').textContent = 0;
+        }
+       
     }
 
 });
+
+document.querySelector('.again').addEventListener('click', function() {
+    score = 20;
+    secretNumber = Math.trunc(Math.random()*20)+1;
+    document.querySelector('.message').textContent = "silahkan menebak angka";
+    document.querySelector('.score').textContent = score;
+    document.querySelector('.number').textContent = '?' ;
+    document.querySelector('.guess').value = '';
+    document.querySelector('body').style.backgroundColor = '#222' ;
+    document.querySelector (".number").style.width = '15rem';
+})
+
+
