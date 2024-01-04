@@ -20,13 +20,13 @@ document.querySelector('.check').addEventListener('click', function() {
     // ketika tidak memasukan inputan
     if (!guess) {
         document.querySelector('.message').textContent = "angka tidak ditemukan";
-        
-        document.querySelector('body').style.backgroundColor = "#60b347";
-        document.querySelector('numver').style.width = "30rem";
 
         // ketika player menang
     } else if (guess === secretNumber) {
         document.querySelector('.message').textContent = "selamat anda benar 🎉";
+        document.querySelector('body').style.backgroundColor = '#60b347';
+        
+        document.querySelector('number').style.width = '30rem';
     
     // ketika salah menebak jawaban
     } else if (guess > secretNumber) {
