@@ -17,11 +17,18 @@ document.querySelector('.check').addEventListener('click', function() {
     const guess = Number(document.querySelector('.guess').value);
     console.log(guess);
 
+    // ketika tidak memasukan inputan
     if (!guess) {
         document.querySelector('.message').textContent = "angka tidak ditemukan";
+        
+        document.querySelector('body').style.backgroundColor = "#60b347";
+        document.querySelector('numver').style.width = "30rem";
 
+        // ketika player menang
     } else if (guess === secretNumber) {
         document.querySelector('.message').textContent = "selamat anda benar 🎉";
+    
+    // ketika salah menebak jawaban
     } else if (guess > secretNumber) {
         if(score > 1) {
             document.querySelector('.message').textContent = "angka yang anda masukan terlalu besar";
