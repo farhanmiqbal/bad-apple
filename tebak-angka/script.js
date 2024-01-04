@@ -9,7 +9,7 @@
 // document.querySelector('.guess').value = 15;
 // console.log(document.querySelector('.guess').value);
 
-const secretNumber = Math.trunc(Math.random()*20)+1;
+let secretNumber = Math.trunc(Math.random()*20)+1;
 let score = 20;
 
 
@@ -27,7 +27,7 @@ document.querySelector('.check').addEventListener('click', function() {
         document.querySelector('.message').textContent = "selamat anda benar 🎉";
         document.querySelector('.number').textContent = secretNumber;
         document.querySelector('body').style.backgroundColor = '#60b347';
-        document.querySelector('number').style.width = '30rem';
+        document.querySelector('.number').style.width = '30rem';
         
     
     // ketika salah menebak jawaban
@@ -56,3 +56,15 @@ document.querySelector('.check').addEventListener('click', function() {
     }
 
 });
+
+document.querySelector('.again').addEventListener('click', function() {
+    score = 20;
+    secretNumber = Math.trunc(Math.random()*20)+1;
+    document.querySelector('.message').textContent = "silahkan menebak angka";
+    document.querySelector('.score').textContent = score;
+    document.querySelector('.number').textContent = '?' ;
+    document.querySelector('.guess').value = '';
+    document.querySelector('body').style.backgroundColor = '#222' ;
+    document.querySelector (".number").style.width = '15rem';
+
+})
