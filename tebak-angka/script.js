@@ -18,18 +18,32 @@ document.querySelector('.check').addEventListener('click', function() {
     console.log(guess);
 
     if (!guess) {
-        document.querySelector('.message').textContent = "angka tidak ditemukan"
+        document.querySelector('.message').textContent = "angka tidak ditemukan";
 
     } else if (guess === secretNumber) {
-        document.querySelector('.message').textContent = "selamat anda benar 🎉"
+        document.querySelector('.message').textContent = "selamat anda benar 🎉";
     } else if (guess > secretNumber) {
-        document.querySelector('.message').textContent = "angka yang anda masukan terlalu besar"
+        if(score > 1) {
+            document.querySelector('.message').textContent = "angka yang anda masukan terlalu besar";
         score --;
         document.querySelector('.score').textContent = score;
+        } else {
+            document.querySelector('.message').textContent = "anda kalah";
+            document.querySelector('.score').textContent = 0;
+        }
+
+        
     } else if (guess < secretNumber) {
-        document.querySelector('.message').textContent = "angka yang anda masukan terlalu kecil"
-        score --;
-        document.querySelector('.score').textContent = score;
+        if (score > 1) {
+            document.querySelector('.message').textContent = "angka yang anda masukan terlalu kecil"
+            score --;
+            document.querySelector('.score').textContent = score;
+
+        } else {
+            document.querySelector('.message').textContent = "anda kalah";
+            document.querySelector('.score').textContent = 0;
+        }
+       
     }
 
 });
